@@ -1,4 +1,4 @@
-package com.project.Book.dto;
+package com.project.Book.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookDto {
-    private Integer id;
+    private int id;
     private String title;
     private String author;
     private long isbn;
