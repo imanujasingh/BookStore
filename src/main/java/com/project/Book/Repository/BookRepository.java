@@ -1,12 +1,11 @@
 package com.project.Book.Repository;
 
 import com.project.Book.Entities.Book;
-import com.project.Book.dto.BookDto;
+import com.project.Book.Dto.BookDto;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +26,8 @@ public interface BookRepository extends JpaRepository<Book,Integer> {
             "    b.isbn = CASE WHEN :#{#bookDto.isbn} IS NULL THEN b.isbn ELSE :#{#bookDto.isbn} END " +
             "WHERE b.id = :bookId")
     void updateBook(@Param("bookId") Long bookId, @Param("bookDto") BookDto bookDto);
+    List<Book> findAllByOrderByIdAsc();
+    List<Book> findByAuthorOrderByTitleAsc(String author);
+
 
 }
